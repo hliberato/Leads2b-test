@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
-import VueResource from 'vue-resource'
-import VueResourceMock from 'vue-resource-mock'
-import MockData from './Api/mock.js'
+import './api/mock'
 
 import {
   Pagination,
@@ -170,12 +168,6 @@ Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
-
-Vue.use(VueResource)
-
-if (process.env.NODE_ENV !== 'production') {
-  Vue.use(VueResourceMock, MockData, { silent: false })
-}
 
 Vue.config.productionTip = false
 

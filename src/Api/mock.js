@@ -1,27 +1,15 @@
-export default {
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
 
-  // basic mock
-  'GET */api/login' (pathMatch, query, request, passThrough) {
-    // before respond, you can check the path and query parameters with `pathMatch` & `query`
-    // powered by 'url-pattern' & 'qs'
-    // https://www.npmjs.com/package/url-pattern
-    // https://www.npmjs.com/package/qs
-    // to pass through this mock, call the 4th parameter as a function, the return value will be ignored
-    passThrough()
+const mock = new MockAdapter(axios)
 
-    const body = { /* whatever */ }
-    debugger
-    return {
-      body: body,
-      status: 200,
-      statusText: 'OK',
-      headers: { /* headers */ },
-      delay: 500 // millisecond
-    }
-  }
-
-  // shorthand mock
-  // ['PUT */path/to/resource']: 200, // respond with only status code
-  // ['POST */path/to/resource']: { /*whatever*/ } // respond with only body, status code = 200
-
-}
+mock.onGet('/api/login').reply(200, {
+  token: `Bearer eyJhbGciOiJIUzUxMiJ1.eyJqdGkiOiIxODUiLCJzdWIiOiJnYWJyaWVsYUBqdXN0dG8uY29tLmJyIiwiUEVSU09OU19JRFNfS0VZIj
+  oiMTI0ODUzLDEyNDg2OSwxMjUwNzcsMTI2ODU0LDEyNjkzNiwxMjgxNjksMTI5MTU2LDEyOTI1NSwxMzI2MDUsMTQwNjQ5LDE0NDk2NiwxNTAwMTQsMTUw
+  MDc3LDE1MTkyNiwxNTE5MzIsMTUxOTM4LDE1MTk0NCwxNTI1MjAsMTUzODU5LDE1NTgxNywxNjAyMzQsMTYwNDMzLDE2MTE4MywxNjExOTcsMTYxMzMwLD
+  E2MzI5MSwxNjQzNzMsMTY0NjU0LDE2ODgzNiw0OTYyOSw1MDY1NSw4Nzc0Miw4Nzc0NCw4Nzc0NSw4Nzc1OSw4Nzc2NCw4Nzc2NSw4ODA2OCw5MDQ3MCw5
+  MTMyMSw5MTUwMSw5MTY1Nyw5MTY3Myw5MTg5MSw5NTMxNyw5Njc0OSw5ODQyNiwxMDEwODAsMTAxNDI3LDEwMjIzMywxMDUxODEsMTA2MDM0LDEwNjA0OS
+  wxMDk2ODAsMTEyMDE2LDExNjU0MCwxMTc0OTUsMTE3NDk2LDExNzQ5NywxMTc0OTgsMTE3NDk5LDExNzUwMCwxMTc1MDEsMTE3NTAyLDExNzUwMywxMTc1
+  MDQsMTE3NTA2LDExNzUwNywxMTg2ODMsMTIxMTI5LDEyMTIwMCwxMjIwNDUsMTI0Njg5IiwiZXhwIjoxNTg5NjU3NzQ3fQ.7Dnt2HkMw7AeJ7nqH-0oAAK
+  pHM2cIrOBGqlOlFXr0qCCXVaDzLUUqeLRfsYTfDTDe4wKwDpVuHJtHBpRc7ZGhA`
+})
