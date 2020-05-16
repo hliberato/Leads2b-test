@@ -5,7 +5,7 @@ import getters from './getters'
 const account = {
   state: {
     email: '',
-    token: localStorage.getItem('leads2blogin') || ''
+    token: localStorage.getItem('leads2btoken') || null
   },
   mutations,
   actions,

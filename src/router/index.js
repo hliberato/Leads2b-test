@@ -7,12 +7,14 @@ Vue.use(VueRouter)
 const routes = [{
   path: '/',
   name: 'Home',
-  component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
-  meta: { requiresAuth: true }
+  component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
 }, {
   path: '/login',
   name: 'Login',
   component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+}, {
+  path: '*',
+  redirect: '/'
 }]
 
 const router = new VueRouter({
@@ -20,10 +22,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (Store.getters.isLoggedIn) next()
-    else next('login')
-  } else next()
+  if (Store.getters.isLoggedIn) {
+    if (to.name === 'Login') {
+      next('home')
+    } next()
+  } else to.name === 'Login' ? next() : next('login')
 })
 
 export default router

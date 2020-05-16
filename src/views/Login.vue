@@ -59,9 +59,11 @@ export default {
             email: this.loginForm.email,
             password: this.loginForm.password
           }).then(() => {
-            loading.close()
+            this.$router.push('Home')
           }).catch(error => {
             console.error(error)
+          }).finally(() => {
+            loading.close()
           })
         }
       })

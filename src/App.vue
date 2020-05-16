@@ -1,5 +1,42 @@
 <template>
   <div id="app">
-    <router-view />
+    <el-container>
+      <el-header>Header</el-header>
+      <el-main>
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
+      </el-main>
+      <el-footer>Footer</el-footer>
+    </el-container>
   </div>
 </template>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900');
+
+* {
+  font-family: 'Montserrat', sans-serif !important;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body, html, #app, .el-container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  color: #fff;
+  background-color: #409EFF;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
