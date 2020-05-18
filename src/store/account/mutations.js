@@ -1,13 +1,19 @@
 const loginMutations = {
 
-  setToken (state, token) {
-    if (token) {
-      state.token = token
-      localStorage.setItem('leads2btoken', token)
+  setToken (state, params) {
+    if (params) {
+      state.token = params.token
+      state.email = params.email
+      localStorage.setItem(
+        'leads2blogin',
+        JSON.stringify({ token: params.token, email: params.email })
+      )
     }
   },
   logout (state) {
     state.token = null
+    state.email = null
+    localStorage.removeItem('leads2blogin')
   }
 
 }

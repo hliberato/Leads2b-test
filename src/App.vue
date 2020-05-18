@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header><Header /></el-header>
+      <el-header height="auto">
+        <Header />
+      </el-header>
       <el-main>
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>
       </el-main>
-      <el-footer><Footer /></el-footer>
+      <el-footer>
+        <Footer />
+      </el-footer>
     </el-container>
   </div>
 </template>

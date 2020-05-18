@@ -1,7 +1,8 @@
 <template lang="html">
-  <div>
-    a
-  </div>
+  <h1>
+    Easy Employee Manager
+    <i class="el-icon-s-custom" />
+  </h1>
 </template>
 
 <script>
@@ -10,5 +11,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+h1 {
+  text-align: center;
+}
 </style>

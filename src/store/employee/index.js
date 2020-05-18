@@ -3,7 +3,10 @@ import actions from './actions'
 import getters from './getters'
 
 const login = {
-  state: {},
+  state: {
+    employees: [],
+    employee: {}
+  },
   mutations,
   actions,
   getters
