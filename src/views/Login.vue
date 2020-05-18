@@ -1,28 +1,14 @@
 <template lang="html">
   <div>
-    <el-form
-      ref="loginForm"
-      :rules="loginRules"
-      :model="loginForm"
-    >
+    <el-form ref="loginForm" :rules="loginRules" :model="loginForm">
       <el-form-item prop="email">
-        <el-input
-          v-model="loginForm.email"
-          placeholder="E-mail"
-        />
+        <el-input v-model="loginForm.email" placeholder="E-mail" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input
-          v-model="loginForm.password"
-          placeholder="Password"
-          type="password"
-        />
+        <el-input v-model="loginForm.password" placeholder="Password" type="password" />
       </el-form-item>
       <el-form-item>
-        <el-button
-          type="primary"
-          @click="doLogin"
-        >
+        <el-button type="primary" @click="doLogin">
           Login
         </el-button>
       </el-form-item>

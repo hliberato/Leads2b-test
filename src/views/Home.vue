@@ -1,11 +1,8 @@
 <template lang="html">
   <div>
-    <el-button
-      type="text"
-      @click="logout"
-    >
-    Sair
-  </el-button>
+    <el-button type="text" @click="logout">
+      Sair
+    </el-button>
   </div>
 </template>
 
