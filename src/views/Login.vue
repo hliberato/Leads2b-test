@@ -1,11 +1,16 @@
 <template lang="html">
   <div class="login-view">
-    <el-form v-if="!forgotFormVisible" ref="loginForm" :model="loginForm" :rules="loginRules">
+    <el-form
+      v-if="!forgotFormVisible"
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      @submit.native.prevent="doLogin">
       <el-form-item prop="email">
-        <el-input v-model="loginForm.email" placeholder="E-mail" />
+        <el-input v-model="loginForm.email" placeholder="E-mail" @keyup.enter.native="doLogin" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="loginForm.password" placeholder="Password" type="password" />
+        <el-input v-model="loginForm.password" placeholder="Password" type="password" @keyup.enter.native="doLogin" />
       </el-form-item>
       <br>
       <el-form-item>
@@ -17,7 +22,12 @@
         </el-button>
       </el-form-item>
     </el-form>
-    <el-form v-else ref="forgotForm" :model="forgotForm" :rules="forgotFormRules" @submit.native.prevent="recoveryPassword">
+    <el-form
+      v-else
+      ref="forgotForm"
+      :model="forgotForm"
+      :rules="forgotFormRules"
+      @submit.native.prevent="recoveryPassword">
       <el-form-item prop="email">
         <el-input v-model="forgotForm.email" placeholder="E-mail" />
       </el-form-item>
@@ -73,6 +83,12 @@ export default {
           }).then(() => {
             this.$router.push('Home')
           }).catch(error => {
+            this.$notify({
+              title: 'Invalid credentials',
+              message: 'Check you e-mail and password to proceed.',
+              type: 'error',
+              position: 'bottom-right'
+            })
             console.error(error)
           }).finally(() => {
             loading.close()

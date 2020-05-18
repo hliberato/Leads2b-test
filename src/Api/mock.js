@@ -3,15 +3,20 @@ import MockAdapter from 'axios-mock-adapter'
 
 const mock = new MockAdapter(axios, { delayResponse: 2000 })
 
-mock.onGet('/api/login').reply(200, {
-  token: `Bearer eyJhbGciOiJIUzUxMiJ1.eyJqdGkiOiIxODUiLCJzdWIiOiJnYWJyaWVsYUBqdXN0dG8uY29tLmJyIiwiUEVSU09OU19JRFNfS0VZIj
-  oiMTI0ODUzLDEyNDg2OSwxMjUwNzcsMTI2ODU0LDEyNjkzNiwxMjgxNjksMTI5MTU2LDEyOTI1NSwxMzI2MDUsMTQwNjQ5LDE0NDk2NiwxNTAwMTQsMTUw
-  MDc3LDE1MTkyNiwxNTE5MzIsMTUxOTM4LDE1MTk0NCwxNTI1MjAsMTUzODU5LDE1NTgxNywxNjAyMzQsMTYwNDMzLDE2MTE4MywxNjExOTcsMTYxMzMwLD
-  E2MzI5MSwxNjQzNzMsMTY0NjU0LDE2ODgzNiw0OTYyOSw1MDY1NSw4Nzc0Miw4Nzc0NCw4Nzc0NSw4Nzc1OSw4Nzc2NCw4Nzc2NSw4ODA2OCw5MDQ3MCw5
-  MTMyMSw5MTUwMSw5MTY1Nyw5MTY3Myw5MTg5MSw5NTMxNyw5Njc0OSw5ODQyNiwxMDEwODAsMTAxNDI3LDEwMjIzMywxMDUxODEsMTA2MDM0LDEwNjA0OS
-  wxMDk2ODAsMTEyMDE2LDExNjU0MCwxMTc0OTUsMTE3NDk2LDExNzQ5NywxMTc0OTgsMTE3NDk5LDExNzUwMCwxMTc1MDEsMTE3NTAyLDExNzUwMywxMTc1
-  MDQsMTE3NTA2LDExNzUwNywxMTg2ODMsMTIxMTI5LDEyMTIwMCwxMjIwNDUsMTI0Njg5IiwiZXhwIjoxNTg5NjU3NzQ3fQ.7Dnt2HkMw7AeJ7nqH-0oAAK
-  pHM2cIrOBGqlOlFXr0qCCXVaDzLUUqeLRfsYTfDTDe4wKwDpVuHJtHBpRc7ZGhA`
+mock.onGet('/api/login').reply(function (config) {
+  if (config.email.toLowerCase() === 'bia@leads2b.com.br' && config.password === '123456') {
+    return [200, {
+      token: `Bearer eyJhbGciOiJIUzUxMiJ1.eyJqdGkiOiIxODUiLCJzdWIiOiJnYWJyaWVsYUBqdXN0dG8uY29tLmJyIiwiUEVSU09OU19JRFNfS0VZIj
+      oiMTI0ODUzLDEyNDg2OSwxMjUwNzcsMTI2ODU0LDEyNjkzNiwxMjgxNjksMTI5MTU2LDEyOTI1NSwxMzI2MDUsMTQwNjQ5LDE0NDk2NiwxNTAwMTQsMTUw
+      MDc3LDE1MTkyNiwxNTE5MzIsMTUxOTM4LDE1MTk0NCwxNTI1MjAsMTUzODU5LDE1NTgxNywxNjAyMzQsMTYwNDMzLDE2MTE4MywxNjExOTcsMTYxMzMwLD
+      E2MzI5MSwxNjQzNzMsMTY0NjU0LDE2ODgzNiw0OTYyOSw1MDY1NSw4Nzc0Miw4Nzc0NCw4Nzc0NSw4Nzc1OSw4Nzc2NCw4Nzc2NSw4ODA2OCw5MDQ3MCw5
+      MTMyMSw5MTUwMSw5MTY1Nyw5MTY3Myw5MTg5MSw5NTMxNyw5Njc0OSw5ODQyNiwxMDEwODAsMTAxNDI3LDEwMjIzMywxMDUxODEsMTA2MDM0LDEwNjA0OS
+      wxMDk2ODAsMTEyMDE2LDExNjU0MCwxMTc0OTUsMTE3NDk2LDExNzQ5NywxMTc0OTgsMTE3NDk5LDExNzUwMCwxMTc1MDEsMTE3NTAyLDExNzUwMywxMTc1
+      MDQsMTE3NTA2LDExNzUwNywxMTg2ODMsMTIxMTI5LDEyMTIwMCwxMjIwNDUsMTI0Njg5IiwiZXhwIjoxNTg5NjU3NzQ3fQ.7Dnt2HkMw7AeJ7nqH-0oAAK
+      pHM2cIrOBGqlOlFXr0qCCXVaDzLUUqeLRfsYTfDTDe4wKwDpVuHJtHBpRc7ZGhA`
+    }]
+  }
+  return [403, {}]
 })
 
 mock.onGet('/api/employee').reply(200, [
@@ -56,6 +61,14 @@ mock.onGet('/api/employee').reply(200, [
   { id: 39, firstName: 'Edi', lastName: 'Antonescu', email: 'eantonescu12@goo.gl', function: 'Account Executive', active: true },
   { id: 40, firstName: 'Angela', lastName: 'Daintry', email: 'adaintry13@jalbum.net', function: 'Environmental Tech', active: true }
 ])
+
+mock.onPut('/api/employee').reply(function (config) {
+  return [200, config.data]
+})
+
+mock.onPost('/api/employee').reply(function (config) {
+  return [200, config.data]
+})
 
 mock.onGet('/api/employee/functions').reply(200, [
   'Data Coordiator',

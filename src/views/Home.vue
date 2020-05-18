@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="home-view">
     <div class="home-view__header">
-      <el-button type="success" icon="el-icon-plus" @click="addDialogVisible = true">
+      <el-button type="success" icon="el-icon-plus" @click="addEmployee">
         Add employee
       </el-button>
       <div>
@@ -38,7 +38,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <AddEmployee :visible.sync="addDialogVisible" />
+    <Employee :visible.sync="employeeDialogVisible" :employee="employeeToEdit" />
   </div>
 </template>
 
@@ -46,11 +46,12 @@
 export default {
   name: 'Home',
   components: {
-    AddEmployee: () => import('../components/AddEmployee')
+    Employee: () => import('../components/Employee')
   },
   data () {
     return {
-      addDialogVisible: false
+      employeeDialogVisible: false,
+      employeeToEdit: {}
     }
   },
   computed: {
@@ -63,7 +64,7 @@ export default {
   },
   mounted () {
     const loading = this.$loading({ lock: true, text: 'Loading employees...' })
-    this.$store.dispatch('getEmployee').finally(() => {
+    this.$store.dispatch('getEmployees').finally(() => {
       loading.close()
     })
   },
@@ -77,6 +78,14 @@ export default {
         this.$store.commit('logout')
         this.$router.push('Login')
       })
+    },
+    addEmployee () {
+      this.employeeToEdit = {}
+      this.employeeDialogVisible = true
+    },
+    editEmployee (employeeToEdit) {
+      this.employeeToEdit = employeeToEdit
+      this.employeeDialogVisible = true
     }
   }
 }

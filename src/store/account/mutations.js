@@ -1,5 +1,4 @@
 const loginMutations = {
-
   setToken (state, params) {
     if (params) {
       state.token = params.token
@@ -15,7 +14,6 @@ const loginMutations = {
     state.email = null
     localStorage.removeItem('leads2blogin')
   }
-
 }
 
 export default loginMutations

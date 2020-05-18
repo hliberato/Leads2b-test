@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const loginActions = {
-
   doLogin ({ commit }, loginForm) {
     return new Promise((resolve, reject) => {
       axios.get('/api/login', loginForm).then(response => {
@@ -12,7 +11,6 @@ const loginActions = {
       })
     })
   }
-
 }
 
 export default loginActions

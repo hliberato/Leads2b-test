@@ -4,8 +4,7 @@ import getters from './getters'
 
 const login = {
   state: {
-    employees: [],
-    employee: {}
+    employees: []
   },
   mutations,
   actions,
