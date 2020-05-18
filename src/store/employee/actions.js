@@ -21,6 +21,16 @@ const employeeActions = {
         reject(error)
       })
     })
+  },
+  removeEmployee ({ commit }, employeeId) {
+    return new Promise((resolve, reject) => {
+      axios.delete('/api/employee', { employeeId }).then(response => {
+        commit('removeEmployee', response.data)
+        resolve(resolve)
+      }).catch(error => {
+        reject(error)
+      })
+    })
   }
 }
 

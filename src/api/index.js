@@ -70,6 +70,10 @@ mock.onPost('/api/employee').reply(function (config) {
   return [200, config.data]
 })
 
+mock.onDelete('/api/employee').reply(function (config) {
+  return [200, config.employeeId]
+})
+
 mock.onGet('/api/employee/functions').reply(200, [
   'Data Coordiator',
   'Environmental Specialist',

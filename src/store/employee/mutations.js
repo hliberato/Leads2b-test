@@ -12,6 +12,10 @@ const employeeMutations = {
       employee.id = state.employees[0].id + 1
       state.employees.unshift(employee)
     }
+  },
+  removeEmployee (state, employeeId) {
+    const employeeIndex = state.employees.findIndex(e => e.id === employeeId)
+    if (employeeIndex !== -1) Vue.delete(state.employees, employeeIndex)
   }
 }
 
