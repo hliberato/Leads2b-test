@@ -54,4 +54,9 @@ header, footer {
   opacity: 0;
 }
 
+.el-form-item__error {
+  left: initial !important;
+  right: 0;
+}
+
 </style>

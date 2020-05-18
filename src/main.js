@@ -81,8 +81,8 @@ import {
   // CascaderPanel,
   Loading,
   MessageBox,
-  Message
-  // Notification
+  Message,
+  Notification
 } from 'element-ui'
 
 // Vue.use(Pagination)
