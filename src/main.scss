@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+
+$--color-primary: #176fae;
+$--color-background: #fff;
+$--color-success: #67C23A;
+$--color-danger: #F56C6C;
+$--color-text-dark: #424242;
+$--color-text-on-primary: #fff;
+
+$--font-size-xs: 12px;
+$--font-size-sm: 14px;
+$--font-size-default: 16px;
+$--font-size-lg: 22px;
+$--font-size-xg: 32px;
+
+$--font-weight-regular: 400;
+$--font-weight-medium: 500;
+$--font-weight-bold: 700;
+
+$--space-xs: 4px;
+$--space-sm: 8px;
+$--space-md: 16px;
+$--space-st: 24px;
+$--space-lg: 32px;
+$--space-xl: 40px;
+$--space-xxl: 48px;
+$--space-jumbo: 64px;
+
+
+body, html, #app, .el-container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $--color-text-dark;
+  margin: 0;
+  font-size: 16px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+// ElementUI overrides
+
+.el-main {
+  padding: 20px 0 !important;
+}
+
+.el-form-item__error {
+  left: initial !important;
+  right: 0;
+}
+
+.el-icon-check {
+  color: $--color-success;
+}
+
+.el-icon-close, .el-icon-delete {
+  color: $--color-danger;
+}

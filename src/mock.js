@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 
 const mock = new MockAdapter(axios, { delayResponse: 2000 })
 
-mock.onGet('/api/login').reply(function (config) {
+mock.onGet('/api/token').reply(function (config) {
   if (config.email.toLowerCase() === 'bia@leads2b.com.br' && config.password === '123456') {
     return [200, {
       token: `Bearer eyJhbGciOiJIUzUxMiJ1.eyJqdGkiOiIxODUiLCJzdWIiOiJnYWJyaWVsYUBqdXN0dG8uY29tLmJyIiwiUEVSU09OU19JRFNfS0VZIj
@@ -13,7 +13,8 @@ mock.onGet('/api/login').reply(function (config) {
       MTMyMSw5MTUwMSw5MTY1Nyw5MTY3Myw5MTg5MSw5NTMxNyw5Njc0OSw5ODQyNiwxMDEwODAsMTAxNDI3LDEwMjIzMywxMDUxODEsMTA2MDM0LDEwNjA0OS
       wxMDk2ODAsMTEyMDE2LDExNjU0MCwxMTc0OTUsMTE3NDk2LDExNzQ5NywxMTc0OTgsMTE3NDk5LDExNzUwMCwxMTc1MDEsMTE3NTAyLDExNzUwMywxMTc1
       MDQsMTE3NTA2LDExNzUwNywxMTg2ODMsMTIxMTI5LDEyMTIwMCwxMjIwNDUsMTI0Njg5IiwiZXhwIjoxNTg5NjU3NzQ3fQ.7Dnt2HkMw7AeJ7nqH-0oAAK
-      pHM2cIrOBGqlOlFXr0qCCXVaDzLUUqeLRfsYTfDTDe4wKwDpVuHJtHBpRc7ZGhA`
+      pHM2cIrOBGqlOlFXr0qCCXVaDzLUUqeLRfsYTfDTDe4wKwDpVuHJtHBpRc7ZGhA`,
+      email: config.email
     }]
   }
   return [403, {}]

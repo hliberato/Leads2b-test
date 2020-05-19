@@ -1,16 +1,11 @@
-import axios from 'axios'
+import { ApiService } from '../../service.js'
+const service = new ApiService()
 
 const loginActions = {
-  doLogin ({ commit }, loginForm) {
-    return new Promise((resolve, reject) => {
-      axios.get('/api/login', loginForm).then(response => {
-        commit('setToken', { token: response.data.token, email: loginForm.email })
-        resolve(resolve)
-      }).catch(error => {
-        reject(error)
-      })
-    })
-  }
+  doLogin: (context, loginForm) =>
+    service
+      .getToken(loginForm)
+      .then((res) => context.commit('setToken', res.data))
 }
 
 export default loginActions

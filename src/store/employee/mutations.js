@@ -1,10 +1,10 @@
 import Vue from 'vue'
 
 const employeeMutations = {
-  setEmployees (state, employees) {
+  setEmployees: (state, employees) => {
     if (Array.isArray(employees) && employees.length) state.employees = employees.reverse()
   },
-  addOrEditEmployee (state, employee) {
+  upsertEmployee: (state, employee) => {
     const employeeIndex = state.employees.findIndex(e => e.id === employee.id)
     if (employeeIndex !== -1) {
       Vue.set(state.employees, employeeIndex, employee)
@@ -13,7 +13,7 @@ const employeeMutations = {
       state.employees.unshift(employee)
     }
   },
-  removeEmployee (state, employeeId) {
+  removeEmployee: (state, employeeId) => {
     const employeeIndex = state.employees.findIndex(e => e.id === employeeId)
     if (employeeIndex !== -1) Vue.delete(state.employees, employeeIndex)
   }

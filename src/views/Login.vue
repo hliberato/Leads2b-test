@@ -47,31 +47,29 @@
 <script>
 export default {
   name: 'Login',
-  data () {
-    return {
-      loginForm: {
-        email: '',
-        password: ''
-      },
-      loginRules: {
-        email: [
-          { required: true, message: 'Required Field', trigger: 'submit' },
-          { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
-        ],
-        password: [
-          { required: true, message: 'Required Field', trigger: 'submit' }
-        ]
-      },
-      forgotFormVisible: false,
-      forgotForm: { email: '' },
-      forgotFormRules: {
-        email: [
-          { required: true, message: 'Required Field', trigger: 'submit' },
-          { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
-        ]
-      }
+  data: () => ({
+    loginForm: {
+      email: '',
+      password: ''
+    },
+    loginRules: {
+      email: [
+        { required: true, message: 'Required Field', trigger: 'submit' },
+        { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
+      ],
+      password: [
+        { required: true, message: 'Required Field', trigger: 'submit' }
+      ]
+    },
+    forgotFormVisible: false,
+    forgotForm: { email: '' },
+    forgotFormRules: {
+      email: [
+        { required: true, message: 'Required Field', trigger: 'submit' },
+        { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
+      ]
     }
-  },
+  }),
   methods: {
     doLogin () {
       this.$refs.loginForm.validate(valid => {
@@ -82,14 +80,13 @@ export default {
             password: this.loginForm.password
           }).then(() => {
             this.$router.push('Home')
-          }).catch(error => {
+          }).catch(() => {
             this.$notify({
               title: 'Invalid credentials',
               message: 'Check you e-mail and password to proceed.',
               type: 'error',
               position: 'bottom-right'
             })
-            console.error(error)
           }).finally(() => {
             loading.close()
           })

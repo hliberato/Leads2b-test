@@ -5,7 +5,7 @@
     :close-on-press-escape="!loading"
     :show-close="!loading"
     :title="newEmployee ? 'Add employee' : 'Edit employee'"
-    class="employee-component">
+    class="employee-dialog">
     <el-form
       ref="employeeForm"
       :model="employeeForm"
@@ -29,7 +29,7 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button :disabled="loading" @click="dialogVisible = false">Cancel</el-button>
-      <el-button :loading="loading" type="primary" @click="addOrEdit">
+      <el-button :loading="loading" type="primary" @click="upsertEmployee">
         {{ newEmployee ? 'Add' : 'Edit' }}
       </el-button>
     </span>
@@ -49,28 +49,26 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      loading: false,
-      employeeForm: {
-        id: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        function: '',
-        active: true
-      },
-      employeeFormRules: {
-        firstName: [{ required: true, message: 'Required Field', trigger: 'submit' }],
-        lastName: [{ required: true, message: 'Required Field', trigger: 'submit' }],
-        function: [{ required: true, message: 'Required Field', trigger: 'submit' }],
-        email: [
-          { required: true, message: 'Required Field', trigger: 'submit' },
-          { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
-        ]
-      }
+  data: () => ({
+    loading: false,
+    employeeForm: {
+      id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      function: '',
+      active: true
+    },
+    employeeFormRules: {
+      firstName: [{ required: true, message: 'Required Field', trigger: 'submit' }],
+      lastName: [{ required: true, message: 'Required Field', trigger: 'submit' }],
+      function: [{ required: true, message: 'Required Field', trigger: 'submit' }],
+      email: [
+        { required: true, message: 'Required Field', trigger: 'submit' },
+        { type: 'email', required: true, message: 'Invalid e-mail', trigger: 'submit' }
+      ]
     }
-  },
+  }),
   computed: {
     dialogVisible: {
       get () {
@@ -92,11 +90,11 @@ export default {
     }
   },
   methods: {
-    addOrEdit () {
+    upsertEmployee () {
       this.$refs.employeeForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('addOrEdit', this.employeeForm).then(() => {
+          this.$store.dispatch('upsertEmployee', this.employeeForm).then(() => {
             this.dialogVisible = false
             const action = this.newEmployee ? 'added' : 'edited'
             this.$notify({
@@ -128,7 +126,7 @@ export default {
 </script>
 
 <style lang="scss">
-.employee-component {
+.employee-dialog {
   .el-dialog {
     width: 90%;
     max-width: 400px;

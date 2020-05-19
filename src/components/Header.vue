@@ -1,7 +1,7 @@
 <template lang="html">
   <h1>
+    <img src="../assets/logo.png" alt="logo">
     Easy Employee Manager
-    <i class="el-icon-s-custom" />
   </h1>
 </template>
 
@@ -14,5 +14,9 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
+}
+
+img {
+  width: 1.4rem;
 }
 </style>

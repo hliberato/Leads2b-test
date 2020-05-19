@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router.js'
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
-import './api'
+import './mock.js'
 
 import {
   // Pagination,
