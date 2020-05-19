@@ -8,15 +8,16 @@
 npm install
 ```
 
-### Compiles and hot-reloads for preview and development
+## Compiles and hot-reloads for preview and development
 ```
 npm run serve
 ```
-### Login
+
+## Login
 E-mail: bia@leads2b.com.br
 Pasword: 123456
 
-### Run end-to-end tests (100% covered :kissing_heart:)
+## Run end-to-end tests (100% covered :blue_heart::blue_heart::blue_heart:)
 ```
 npm run test:e2e
 ```
