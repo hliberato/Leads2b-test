@@ -1,34 +1,22 @@
-# Leads2b
+# :office: Easy Employee Manager - Leads2b Test
+
+## Online preview
+[Easy Employee Manager](https://leads2b-test.netlify.app/)
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for preview and development
 ```
 npm run serve
 ```
+### Login
+E-mail: bia@leads2b.com.br
+Pasword: 123456
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your end-to-end tests
+### Run end-to-end tests (100% covered :kissing_heart:)
 ```
 npm run test:e2e
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
