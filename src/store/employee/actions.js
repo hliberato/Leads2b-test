@@ -13,7 +13,7 @@ const employeeActions = {
   removeEmployee: (context, employeeId) =>
     service
       .removeEmployee(employeeId)
-      .then((res) => context.commit('removeEmployee', res.data))
+      .then((res) => context.commit('removeEmployee', employeeId))
 }
 
 export default employeeActions

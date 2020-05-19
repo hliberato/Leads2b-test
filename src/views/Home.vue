@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="home-view">
     <div class="home-view__header">
-      <el-button type="success" icon="el-icon-plus" @click="$refs.employeeTable.addEmployee()">
+      <el-button id="cy-button-add" type="success" icon="el-icon-plus" @click="$refs.employeeTable.addEmployee()">
         Add employee
       </el-button>
       <div>
@@ -39,6 +39,7 @@ export default {
         cancelButtonText: 'Cancel'
       }).then(() => {
         this.$store.commit('logout')
+        this.$store.commit('clearEmployees')
         this.$router.push('Login')
       })
     }
@@ -52,6 +53,8 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
 
   &__header {
     display: flex;

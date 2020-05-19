@@ -1,39 +1,39 @@
 <template lang="html">
   <div class="login-view">
     <el-form
-      v-if="!forgotFormVisible"
+      v-show="!forgotFormVisible"
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
-      @submit.native.prevent="doLogin">
+      @submit.native.prevent>
       <el-form-item prop="email">
-        <el-input v-model="loginForm.email" placeholder="E-mail" @keyup.enter.native="doLogin" />
+        <el-input id="cy-input-email" v-model="loginForm.email" placeholder="E-mail" @keyup.enter.native="doLogin" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="loginForm.password" placeholder="Password" type="password" @keyup.enter.native="doLogin" />
+        <el-input id="cy-input-password" v-model="loginForm.password" placeholder="Password" type="password" @keyup.enter.native="doLogin" />
       </el-form-item>
       <br>
       <el-form-item>
-        <el-button type="primary" @click="doLogin">
+        <el-button id="cy-button-login" type="primary" @click="doLogin">
           Login
         </el-button>
-        <el-button type="text" @click="forgotFormVisible = true">
+        <el-button id="cy-button-forgot" type="text" @click="showForgot">
           Forgot password?
         </el-button>
       </el-form-item>
     </el-form>
     <el-form
-      v-else
+      v-show="forgotFormVisible"
       ref="forgotForm"
       :model="forgotForm"
       :rules="forgotFormRules"
-      @submit.native.prevent="recoveryPassword">
+      @submit.native.prevent>
       <el-form-item prop="email">
-        <el-input v-model="forgotForm.email" placeholder="E-mail" />
+        <el-input id="cy-input-forgotemail" v-model="forgotForm.email" placeholder="E-mail" @keyup.enter.native="recoveryPassword" />
       </el-form-item>
       <br>
       <el-form-item>
-        <el-button type="primary" @click="recoveryPassword">
+        <el-button id="cy-button-recovery" type="primary" @click="recoveryPassword">
           Recovery
         </el-button>
         <el-button type="text" @click="forgotFormVisible = false">
@@ -70,6 +70,12 @@ export default {
       ]
     }
   }),
+  watch: {
+    forgotFormVisible () {
+      this.$refs.loginForm.clearValidate()
+      this.$refs.forgotForm.clearValidate()
+    }
+  },
   methods: {
     doLogin () {
       this.$refs.loginForm.validate(valid => {
@@ -92,6 +98,10 @@ export default {
           })
         }
       })
+    },
+    showForgot () {
+      this.forgotForm.email = this.loginForm.email
+      this.forgotFormVisible = true
     },
     recoveryPassword () {
       this.$refs.forgotForm.validate(valid => {

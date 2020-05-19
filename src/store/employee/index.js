@@ -2,7 +2,7 @@ import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
 
-const login = {
+const employee = {
   state: {
     employees: []
   },
@@ -11,4 +11,4 @@ const login = {
   getters
 }
 
-export default login
+export default employee

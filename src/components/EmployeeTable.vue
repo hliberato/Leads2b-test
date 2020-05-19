@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="employee-table">
     <el-table :data="employees" height="100%">
       <el-table-column prop="id" label="#" align="center" min-width="50px" />
       <el-table-column prop="firstName" label="First name" min-width="90px" />
@@ -19,10 +19,10 @@
       <el-table-column align="center">
         <template slot-scope="scope">
           <el-tooltip content="Edit employee">
-            <el-button type="text" icon="el-icon-edit" @click="editEmployee(scope.row)" />
+            <el-button id="cy-button-edit" type="text" icon="el-icon-edit" @click="editEmployee(scope.row)" />
           </el-tooltip>
           <el-tooltip content="Remove employee">
-            <el-button type="text" icon="el-icon-delete" @click="removeEmployee(scope.row.id)" />
+            <el-button id="cy-button-remove" type="text" icon="el-icon-delete" @click="removeEmployee(scope.row.id)" />
           </el-tooltip>
         </template>
       </el-table-column>
@@ -73,6 +73,9 @@ export default {
 </script>
 
 <style lang="scss">
+.employee-table {
+  flex: 1;
+}
 @media (max-width: 414px) {
   .el-table {
     font-size: 12px;

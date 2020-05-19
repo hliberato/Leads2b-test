@@ -12,24 +12,24 @@
       :disabled="loading"
       :rules="employeeFormRules">
       <el-form-item label="First name" prop="firstName">
-        <el-input v-model="employeeForm.firstName" />
+        <el-input id="cy-input-firstname" v-model="employeeForm.firstName" />
       </el-form-item>
       <el-form-item label="Last name" prop="lastName">
-        <el-input v-model="employeeForm.lastName" />
+        <el-input id="cy-input-lastname" v-model="employeeForm.lastName" />
       </el-form-item>
       <el-form-item label="E-mail" prop="email">
-        <el-input v-model="employeeForm.email" />
+        <el-input id="cy-input-email" v-model="employeeForm.email" />
       </el-form-item>
       <el-form-item label="Functione" prop="function">
-        <el-input v-model="employeeForm.function" />
+        <el-input id="cy-input-function" v-model="employeeForm.function" />
       </el-form-item>
-      <el-form-item label="Active" prop="active">
+      <el-form-item id="cy-input-active" label="Active" prop="active">
         <el-switch v-model="employeeForm.active" />
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button :disabled="loading" @click="dialogVisible = false">Cancel</el-button>
-      <el-button :loading="loading" type="primary" @click="upsertEmployee">
+      <el-button id="cy-button-upsert" :loading="loading" type="primary" @click="upsertEmployee">
         {{ newEmployee ? 'Add' : 'Edit' }}
       </el-button>
     </span>

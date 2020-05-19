@@ -16,7 +16,8 @@ const employeeMutations = {
   removeEmployee: (state, employeeId) => {
     const employeeIndex = state.employees.findIndex(e => e.id === employeeId)
     if (employeeIndex !== -1) Vue.delete(state.employees, employeeIndex)
-  }
+  },
+  clearEmployees: state => { state.employees = [] }
 }
 
 export default employeeMutations
