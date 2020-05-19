@@ -3,6 +3,8 @@
 ## Online preview
 [Easy Employee Manager](https://leads2b-test.netlify.app/)
 
+:iphone: Works on mobile!
+
 ## Project setup
 ```
 npm install
