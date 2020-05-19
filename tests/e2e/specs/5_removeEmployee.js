@@ -1,4 +1,4 @@
-describe('Edit employee', () => {
+describe('Remove employee', () => {
   it('Login', () => {
     cy.visit('/')
     cy.get('#cy-input-email').type('bia@leads2b.com.br')

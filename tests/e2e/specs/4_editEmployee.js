@@ -7,7 +7,6 @@ describe('Edit employee', () => {
   })
   it('Open edit modal', () => {
     cy.get('#cy-button-edit').first().click()
-
   })
   it('Type new name and edit', () => {
     cy.get('#cy-input-firstname').clear().type('VerySpecificName')
